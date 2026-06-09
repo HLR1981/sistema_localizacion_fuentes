@@ -18,13 +18,14 @@ function App() {
     });
   };
 
-  // 2. Función corregida para enviar los datos al Backend sin falsos errores
+  // 2. Función corregida para enviar los datos al Backend en RENDER
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('📥 Enviando datos al servidor:', formData);
+    console.log('📥 Enviando datos al servidor en la nube:', formData);
 
     try {
-      const response = await fetch('http://localhost:5000/api/fuentes', {
+      // 🚀 CAMBIO CLAVE: Ahora apunta a tu servidor real en Render
+      const response = await fetch('https://sistema-localizacion-fuentes.onrender.com/api/fuentes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -53,7 +54,7 @@ function App() {
 
     } catch (error) {
       console.error('🔴 Error de red en el Frontend:', error);
-      alert('🔴 Error de conexión: Asegúrate de que tu backend esté encendido en la terminal.');
+      alert('🔴 Error de conexión: Hubo un problema al conectar con el servidor en Render.');
     }
   };
 
@@ -67,7 +68,7 @@ function App() {
       borderRadius: '12px',
       boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
       fontFamily: '"Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-      color: '#333'
+      color: '#33]'
     }}>
       <h2 style={{ 
         textAlign: 'center', 
